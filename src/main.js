@@ -1,6 +1,6 @@
 // 儲存全域狀態
 let officeInitialized = false;
-let ollamaHost = 'http://localhost:11434'; // 直接連線至本地 Ollama 服務
+let ollamaHost = localStorage.getItem('ollamaHost') || 'http://localhost:11434';
 let selectedModel = '';
 let chatHistory = [];
 let lastParsedData = null; // 儲存準備填入 Excel 的二維陣列數據
@@ -55,9 +55,13 @@ function updateStatus(msg) {
 // 初始化 Ollama
 async function initOllama() {
   // 網址變更處理
+  // 載入已儲存的網址
+  hostInput.value = ollamaHost;
+
   hostInput.addEventListener('change', () => {
     const val = hostInput.value.trim();
     ollamaHost = val || 'http://localhost:11434';
+    localStorage.setItem('ollamaHost', ollamaHost);
     fetchModels();
   });
   
