@@ -12,11 +12,11 @@
   <DefaultLocale>zh-TW</DefaultLocale>
   <DisplayName DefaultValue="Excel AI 智慧助手" />
   <Description DefaultValue="整合本地 Ollama 開源模型的 Excel 智慧排版與假單/工時表生成助手。"/>
-  <IconUrl DefaultValue="https://localhost:5173/assets/icon-32.png" />
-  <SupportUrl DefaultValue="https://localhost:5173/support" />
+  <IconUrl DefaultValue="https://william01alltech-hue.github.io/excel-ai-helper/assets/icon-32.png" />
+  <SupportUrl DefaultValue="https://william01alltech-hue.github.io/excel-ai-helper/support" />
   
   <AppDomains>
-    <AppDomain>https://localhost:5173</AppDomain>
+    <AppDomain>https://william01alltech-hue.github.io/excel-ai-helper</AppDomain>
   </AppDomains>
   
   <Hosts>
@@ -24,7 +24,7 @@
   </Hosts>
   
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://localhost:5173/index.html" />
+    <SourceLocation DefaultValue="https://william01alltech-hue.github.io/excel-ai-helper/index.html" />
   </DefaultSettings>
   
   <Permissions>ReadWriteDocument</Permissions>
