@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp 
+  xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" 
+  xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" 
+  xsi:type="TaskPaneApp">
+  
+  <Id>8d227b60-fae9-4e78-9e5c-cb32103f191b</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Local Open Source Community</ProviderName>
+  <DefaultLocale>zh-TW</DefaultLocale>
+  <DisplayName DefaultValue="Excel AI 智慧助手" />
+  <Description DefaultValue="整合本地 Ollama 開源模型的 Excel 智慧排版與假單/工時表生成助手。"/>
+  <IconUrl DefaultValue="https://localhost:5173/assets/icon-32.png" />
+  <SupportUrl DefaultValue="https://localhost:5173/support" />
+  
+  <AppDomains>
+    <AppDomain>https://localhost:5173</AppDomain>
+  </AppDomains>
+  
+  <Hosts>
+    <Host Name="Workbook" />
+  </Hosts>
+  
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://localhost:5173/index.html" />
+  </DefaultSettings>
+  
+  <Permissions>ReadWriteDocument</Permissions>
+</OfficeApp>

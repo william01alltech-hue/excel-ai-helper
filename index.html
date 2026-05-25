@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Excel AI 智慧助手</title>
+  <!-- 導入 Google Fonts Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Office.js SDK (載入 Microsoft Excel API) -->
+  <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+  
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+  <div class="app-container">
+    
+    <!-- 頂部 Header -->
+    <header class="app-header">
+      <div class="header-main">
+        <div class="logo">
+          <span class="icon">🤖</span>
+          <h1>Excel AI 智慧助手</h1>
+        </div>
+        <div id="connection-badge" class="badge badge-disconnected">未連線</div>
+      </div>
+      
+      <!-- 快速顯示當前模型 -->
+      <div class="active-model-bar">
+        <span>目前模型:</span>
+        <span id="current-model-name">尚未選取</span>
+      </div>
+    </header>
+
+    <!-- 主區塊 -->
+    <main class="app-body">
+      
+      <!-- Ollama 設定折疊面板 -->
+      <details class="settings-panel" open>
+        <summary class="settings-summary">
+          <span>⚙️ Ollama 本地連線設定</span>
+          <span class="summary-toggle">▼</span>
+        </summary>
+        <div class="settings-content">
+          <div class="form-group">
+            <label for="ollama-host">Ollama 主機網址:</label>
+            <input type="text" id="ollama-host" value="http://localhost:11434" placeholder="e.g. http://localhost:11434">
+          </div>
+          <div class="form-group">
+            <label for="model-select">選擇本地模型:</label>
+            <div class="select-row">
+              <select id="model-select">
+                <option value="">載入中或未連線...</option>
+              </select>
+              <button id="btn-refresh-models" class="btn btn-icon" title="重新整理模型清單">🔄</button>
+            </div>
+          </div>
+          <div class="status-tips">
+            💡 提示：請確保本地已執行 <code>OLLAMA_ORIGINS="*" ollama serve</code> 以防跨網域阻擋。
+          </div>
+        </div>
+      </details>
+
+      <!-- 對話展示區 -->
+      <div class="chat-container" id="chat-messages">
+        <div class="message system-message">
+          <div class="message-content">
+            歡迎使用！我是您的本地開源 AI 助手。你可以直接和我聊天，或者使用下方的 Excel 工具。
+            <br><br>
+            <strong>快速開始步驟：</strong>
+            <ol>
+              <li>確認本機已執行 Ollama</li>
+              <li>在上方設定並載入本地模型 (如 qwen2.5)</li>
+              <li>選取 Excel 中的範圍，點擊<strong>「分析格式」</strong>按鈕</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- 底部控制面板 -->
+    <footer class="app-footer">
+      <!-- 快捷 Excel 行動按鈕 -->
+      <div class="excel-actions">
+        <button id="btn-analyze-format" class="btn btn-action secondary-btn">
+          <span class="btn-icon">📋</span> 分析選取格式
+        </button>
+        <button id="btn-fill-excel" class="btn btn-action primary-gradient-btn" disabled>
+          <span class="btn-icon">✍️</span> 將 AI 生成填入 Excel
+        </button>
+      </div>
+
+      <!-- 輸入框 -->
+      <div class="input-area">
+        <textarea id="user-input" placeholder="問問 AI 如何寫公式，或請它幫你生成資料..." rows="2"></textarea>
+        <button id="btn-send" class="btn btn-send" title="傳送對話">
+          <svg viewBox="0 0 24 24" class="send-svg">
+            <path d="M2,21L23,12L2,3V10L17,12L2,14V21Z" />
+          </svg>
+        </button>
+      </div>
+      
+      <div class="footer-meta">
+        <button id="btn-clear-chat" class="btn-text">🗑️ 清除對話</button>
+        <span class="status-text" id="status-text">Excel 準備就緒</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
